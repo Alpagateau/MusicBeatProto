@@ -11,6 +11,7 @@ public class rythmicBehaviour : MonoBehaviour
 
     }
     
+    //handles action every frame on beat
     public virtual void onBeat()
     {
 

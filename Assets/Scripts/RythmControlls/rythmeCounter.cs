@@ -27,6 +27,8 @@ public class rythmeCounter : MonoBehaviour
     [HideInInspector]
     public float lastBeat = 0;
     [HideInInspector]
+    public float lastUpdate = 0; //on beat updates are just after the forgiveness threshold
+    [HideInInspector]
     public float nextBeat = 0;
 
     //just to save the value so that we compute it only once (Beat Per Seconde)
@@ -51,19 +53,24 @@ public class rythmeCounter : MonoBehaviour
         btwbps = 1 / bps;
         nextBeat = lastBeat + btwbps;
         musicSource.Play();
+        lastUpdate = forgiveness;
     }
 
     private void Update()
     {
         rythmeHelperPlaceHolder.rectTransform.rotation = Quaternion.Euler(0,0,360* (Time.time - lastBeat) / btwbps);
-        if(Time.time >= btwbps + lastBeat)
+        if (Time.time >= btwbps + lastBeat)
+        {
+            lastBeat = Time.time;
+            nextBeat = lastBeat + btwbps;
+        }
+        if (Time.time >= btwbps + lastUpdate)
         {
             foreach (rythmicBehaviour r in rythmics)
             {
                 r.onBeatUpdate();
             }
-            lastBeat = Time.time;
-            nextBeat = lastBeat + btwbps;
+            lastUpdate = Time.time;
         }
         rythmeF1.fillAmount = forgiveness / btwbps;
         rythmeF2.fillAmount = forgiveness / btwbps;
