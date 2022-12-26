@@ -14,7 +14,6 @@ public class player : rythmicBehaviour
         KeyCode.D
     };
 
-
     public enum action
     {
         none,
@@ -45,14 +44,10 @@ public class player : rythmicBehaviour
     public override void onBeat()
     {
         //check grounded
-        
-        
     }
 
     public override void onBeatUpdate()
     {
-
-
         Debug.DrawRay(transform.position, -Vector2.up, Color.red, 1.0f);
         RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, 1.0f, groundMask);
         if (hit.collider != null)
