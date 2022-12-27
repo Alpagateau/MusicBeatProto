@@ -2,7 +2,8 @@
 /.vscode
 /.vsconfig
 /Library
+/Logs
+/obj
 /Temp
 /UserSettings
-/Logs
 *.log
