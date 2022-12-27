@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class player : rythmicBehaviour
+public class Player : rythmicBehaviour
 {
     public bool isGrounded;
     public LayerMask groundMask;
+    public Projectile Bullet;
     public KeyCode[] keyCodes =
     {
         KeyCode.Z,
@@ -19,10 +20,12 @@ public class player : rythmicBehaviour
         none,
         right,
         left,
-        jump
+        jump,
+        shoot
     };
 
     action nextAction = action.none;
+    public action lastAction;
 
     public override void HandleKeys()
     {
@@ -37,6 +40,10 @@ public class player : rythmicBehaviour
         if (Input.GetKeyDown(keyCodes[0]))
         {
             nextAction = action.jump;
+        }
+        if (Input.GetKeyDown(keyCodes[2]))
+        {
+            nextAction = action.shoot;
         }
         base.HandleKeys();
     }
@@ -80,7 +87,27 @@ public class player : rythmicBehaviour
             transform.Translate(new Vector3(0, 2, 0));
             print("jump");
         }
+        if (nextAction == action.shoot)
+        {
+            Shoot();
+        }
+        if (nextAction != action.none)
+            lastAction = nextAction;
         nextAction = action.none;
         base.onBeatUpdate();
+    }
+
+    public void Shoot()
+    {
+        Projectile bullet = GameObject.Instantiate(Bullet, transform.position, Quaternion.identity);
+        bullet.Direction = Vector2.right;
+        if (lastAction == action.left)
+        {
+            bullet.Direction = Vector2.left;
+        }
+        else if (lastAction == action.jump)
+        {
+            bullet.Direction = Vector2.up;
+        }
     }
 }
