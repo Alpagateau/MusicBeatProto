@@ -6,6 +6,11 @@ public class rythmicBehaviour : MonoBehaviour
 {
     float timeOfHit = 0;
 
+    private void Start()
+    {
+        rythmeCounter._Counter.beat += onBeatUpdate;
+    }
+
     public virtual void onBeatUpdate()
     {
 

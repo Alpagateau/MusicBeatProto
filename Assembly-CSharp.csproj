@@ -59,9 +59,9 @@
     <Compile Include="Assets\Scripts\PlayerControl\player.cs" />
     <Compile Include="Assets\Scripts\HealthBar\healthControl.cs" />
     <Compile Include="Assets\Scripts\RythmControl\rythmicBehaviour.cs" />
+    <Compile Include="Assets\Scripts\RythmControl\rythmicCollider.cs" />
     <Compile Include="Assets\Scripts\RythmControl\rythmeCounter.cs" />
     <Compile Include="Assets\Scripts\PlayerControl\Projectile.cs" />
-    <Compile Include="Assets\Scripts\RythmControl\rythmicCollider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

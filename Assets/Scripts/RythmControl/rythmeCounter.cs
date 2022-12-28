@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -35,7 +36,8 @@ public class rythmeCounter : MonoBehaviour
     float bps = 0;
     float btwbps = 0;
 
-    rythmicBehaviour[] rythmics;
+    public delegate void beatDelegate();
+    public beatDelegate beat;
 
     private void Awake()
     {
@@ -66,10 +68,9 @@ public class rythmeCounter : MonoBehaviour
         }
         if (Time.time >= btwbps + lastUpdate)
         {
-            foreach (rythmicBehaviour r in rythmics)
-            {
-                r.onBeatUpdate();
-            }
+
+            beat?.Invoke();
+            beat();
             lastUpdate = Time.time;
         }
         rythmeF1.fillAmount = forgiveness / btwbps;
