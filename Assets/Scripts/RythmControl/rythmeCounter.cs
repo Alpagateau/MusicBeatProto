@@ -49,7 +49,6 @@ public class rythmeCounter : MonoBehaviour
 
     private void Start()
     {
-        rythmics = FindObjectsOfType<rythmicBehaviour>();
         lastBeat = Time.time;
         bps = BPM / 60;
         btwbps = 1 / bps;
