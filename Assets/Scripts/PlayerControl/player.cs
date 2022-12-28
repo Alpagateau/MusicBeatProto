@@ -109,7 +109,7 @@ public class player : rythmicBehaviour
         else if(nextPos ==  otherPlayer.nextPos)
         {
             //deflect
-            print("deflect actulaly");
+            print("deflect actually");
         }
         else
         {
