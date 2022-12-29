@@ -22,6 +22,7 @@ public class rythmeCounter : MonoBehaviour
     public AudioSource musicSource;
 
     public Image rythmeHelperPlaceHolder, rythmeF1, rythmeF2;
+    public GameObject rythmeHelperClue;
 
     public static rythmeCounter _Counter;
     
@@ -69,7 +70,6 @@ public class rythmeCounter : MonoBehaviour
         {
 
             beat?.Invoke();
-            beat();
             lastUpdate = Time.time;
         }
         rythmeF1.fillAmount = forgiveness / btwbps;

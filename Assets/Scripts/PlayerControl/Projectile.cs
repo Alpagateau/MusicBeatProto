@@ -8,10 +8,6 @@ public class Projectile : rythmicBehaviour
 
     public override void onBeatUpdate()
     {
-        /*Vector3 oldPos = transform.position;
-        oldPos.x += Direction.x;
-        oldPos.y += Direction.y;
-        transform.position = oldPos;*/
         transform.Translate(Direction);
         base.onBeatUpdate();
     }

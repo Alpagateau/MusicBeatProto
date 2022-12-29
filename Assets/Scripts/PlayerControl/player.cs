@@ -2,12 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(SpriteRenderer))]
 public class player : rythmicBehaviour
 {
+    [Header("=> Player Caracteristics")]
+    [Tooltip("Is the player touching the ground")]
     public bool isGrounded;
+
+    [Tooltip("what is considered the ground")]
     public LayerMask groundMask;
+
+    [Tooltip("Is the sprite looking right")]
+    public bool isLookingRight;
+
+
+    [Header("=> References")]
+    [Tooltip("A reference to the other player")]
     public player otherPlayer;
-    public Projectile Bullet;
+
+    [Tooltip("The prefab of the bullet")]
+    public Projectile bulletPrefab;
+
+    SpriteRenderer _spriteRenderer;
+
+    [Header("=> Controls")]
+    [Tooltip("up; left; down; right. Ex : Z Q S D")]
     public KeyCode[] keyCodes =
     {
         KeyCode.Z,
@@ -16,7 +35,7 @@ public class player : rythmicBehaviour
         KeyCode.D
     };
 
-    public enum action
+    public enum actionset
     {
         none,
         right,
@@ -25,39 +44,48 @@ public class player : rythmicBehaviour
         shoot
     };
 
-    action nextAction = action.none;
-    public action lastAction;
-
+    actionset nextAction = actionset.none;
+    [HideInInspector]
+    public actionset lastAction;
+    [HideInInspector]
     public Vector3 nextPos;
+
+
+    private void Start()
+    {
+        _spriteRenderer = transform.GetComponent<SpriteRenderer>();
+        rythmeCounter._Counter.beat += onBeatUpdate;
+    }
 
     public override void HandleKeys()
     {
+        base.HandleKeys();
+        if (!isOnBeat)
+        {
+            nextAction = actionset.none;
+            return;
+        }
         if (Input.GetKeyDown(keyCodes[3]))
         {
-            nextAction = action.right;
+            nextAction = actionset.right;
         }
         if (Input.GetKeyDown(keyCodes[1]))
         {
-            nextAction = action.left;
+            nextAction = actionset.left;
         }
         if (Input.GetKeyDown(keyCodes[0]))
         {
-            nextAction = action.jump;
+            nextAction = actionset.jump;
         }
         if (Input.GetKeyDown(keyCodes[2]))
         {
-            nextAction = action.shoot;
+            nextAction = actionset.shoot;
         }
-        base.HandleKeys();
-    }
-
-    public override void onBeat()
-    {
-        //check grounded
     }
 
     public override void onBeatUpdate()
     {
+        print("onBeatUpdateIsCalled");
         Vector3 mov = Vector3.zero;
 
         Debug.DrawRay(transform.position, -Vector2.up, Color.red, 1.0f);
@@ -72,33 +100,35 @@ public class player : rythmicBehaviour
         }
         if (!isGrounded)
         {
-            if (nextAction != action.jump)
+            if (nextAction != actionset.jump)
             {
                 mov = new Vector3(0, -1, 0);
                 print("gravity");
             }
         }
 
-        if (nextAction == action.right)
+        if (nextAction == actionset.right)
         {
             mov = new Vector3(1, 0, 0);
+            isLookingRight = true;
         }
-        if (nextAction == action.left)
+        if (nextAction == actionset.left)
         {
             mov = new Vector3(-1, 0, 0);
+            isLookingRight = false;
         }
-        if (nextAction == action.jump)
+        if (nextAction == actionset.jump)
         {
             mov = new Vector3(0, 2, 0);
             print("jump");
         }
-        if (nextAction == action.shoot)
+        if (nextAction == actionset.shoot)
         {
             Shoot();
         }
-        if (nextAction != action.none)
+        if (nextAction != actionset.none)
             lastAction = nextAction;
-        nextAction = action.none;
+        nextAction = actionset.none;
         //this part will handle collisions
         nextPos = new Vector3(mov.x + (int)transform.position.x, mov.y + (int)transform.position.y);
         if(nextPos == otherPlayer.transform.position && otherPlayer.nextPos == transform.position)
@@ -115,20 +145,22 @@ public class player : rythmicBehaviour
         {
             transform.Translate(mov);
         }
+        _spriteRenderer.flipX = !isLookingRight;
         base.onBeatUpdate();
     }
 
     public void Shoot()
     {
-        Projectile bullet = GameObject.Instantiate(Bullet, transform.position, Quaternion.identity);
+        Projectile bullet = GameObject.Instantiate(bulletPrefab, transform.position, Quaternion.identity);
         bullet.Direction = Vector2.right;
-        if (lastAction == action.left)
+        if (lastAction == actionset.left)
         {
             bullet.Direction = Vector2.left;
         }
-        else if (lastAction == action.jump)
+        else if (lastAction == actionset.jump)
         {
             bullet.Direction = Vector2.up;
         }
+        Destroy(bullet, 10);
     }
 }

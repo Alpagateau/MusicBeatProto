@@ -5,6 +5,7 @@ using UnityEngine;
 public class rythmicBehaviour : MonoBehaviour
 {
     float timeOfHit = 0;
+    public bool isOnBeat = false;
 
     private void Start()
     {
@@ -32,6 +33,12 @@ public class rythmicBehaviour : MonoBehaviour
 
     public virtual void HandleKeys()
     {
+        GameObject obj = GameObject.Instantiate(rythmeCounter._Counter.rythmeHelperClue, 
+            rythmeCounter._Counter.rythmeHelperPlaceHolder.transform.position, 
+            rythmeCounter._Counter.rythmeHelperPlaceHolder.transform.rotation);
+        obj.transform.SetParent(rythmeCounter._Counter.rythmeHelperPlaceHolder.transform.parent, false);
+        Destroy(obj, 0.5f);
+
         timeOfHit = Time.time;
         float distFromBeat = Mathf.Min(
             Mathf.Abs(timeOfHit - rythmeCounter._Counter.lastBeat),
@@ -39,11 +46,11 @@ public class rythmicBehaviour : MonoBehaviour
             );
         if (distFromBeat < rythmeCounter._Counter.forgiveness)
         {
-            onBeat();
+            isOnBeat = true;
         }
         else
         {
-            print("Offbeat");
+            isOnBeat = false;
         }
     }
 }
