@@ -53,4 +53,10 @@ public class rythmicBehaviour : MonoBehaviour
             isOnBeat = false;
         }
     }
+
+    public void OnDestroy()
+    {
+        rythmeCounter._Counter.beat -= onBeatUpdate;
+        Destroy(gameObject);
+    }
 }
