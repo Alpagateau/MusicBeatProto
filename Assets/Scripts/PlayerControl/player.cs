@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(SpriteRenderer))]
 public class player : rythmicBehaviour
 {
     [Header("=> Player Caracteristics")]
@@ -23,7 +22,7 @@ public class player : rythmicBehaviour
     [Tooltip("The prefab of the bullet")]
     public Projectile bulletPrefab;
 
-    SpriteRenderer _spriteRenderer;
+    public SpriteRenderer _spriteRenderer;
 
     [Header("=> Controls")]
     [Tooltip("up; left; down; right. Ex : Z Q S D")]
@@ -41,10 +40,12 @@ public class player : rythmicBehaviour
         right,
         left,
         jump,
-        shoot
+        shoot,
+        locked
     };
 
-    actionset nextAction = actionset.none;
+//[HideInInspector]
+    public actionset nextAction = actionset.none;
     [HideInInspector]
     public actionset lastAction;
     [HideInInspector]
@@ -53,33 +54,36 @@ public class player : rythmicBehaviour
 
     private void Start()
     {
-        _spriteRenderer = transform.GetComponent<SpriteRenderer>();
         rythmeCounter._Counter.beat += onBeatUpdate;
     }
 
     public override void HandleKeys()
     {
         base.HandleKeys();
-        if (!isOnBeat)
+        if (nextAction != actionset.locked)
         {
-            nextAction = actionset.none;
-            return;
-        }
-        if (Input.GetKeyDown(keyCodes[3]))
-        {
-            nextAction = actionset.right;
-        }
-        if (Input.GetKeyDown(keyCodes[1]))
-        {
-            nextAction = actionset.left;
-        }
-        if (Input.GetKeyDown(keyCodes[0]))
-        {
-            nextAction = actionset.jump;
-        }
-        if (Input.GetKeyDown(keyCodes[2]))
-        {
-            nextAction = actionset.shoot;
+            if (!isOnBeat)
+            {
+                nextAction = actionset.none;
+                return;
+            }
+            if (Input.GetKeyDown(keyCodes[3]))
+            {
+                nextAction = actionset.right;
+            }
+            if (Input.GetKeyDown(keyCodes[1]))
+            {
+                nextAction = actionset.left;
+            }
+            if (Input.GetKeyDown(keyCodes[0]))
+            {
+                nextAction = actionset.jump;
+            }
+            if (Input.GetKeyDown(keyCodes[2]))
+            {
+                nextAction = actionset.shoot;
+                print("action = shoot");
+            }
         }
     }
 
@@ -107,6 +111,11 @@ public class player : rythmicBehaviour
             }
         }
 
+        if (nextAction == actionset.locked)
+        {
+            Attack();
+            print("shoot 2 is called");
+        }
         if (nextAction == actionset.right)
         {
             mov = new Vector3(1, 0, 0);
@@ -124,7 +133,8 @@ public class player : rythmicBehaviour
         }
         if (nextAction == actionset.shoot)
         {
-            Shoot();
+            Attack();
+            print("shoot 1 is called");
         }
         if (nextAction != actionset.none)
             lastAction = nextAction;
@@ -149,7 +159,7 @@ public class player : rythmicBehaviour
         base.onBeatUpdate();
     }
 
-    public void Shoot()
+    public virtual void Attack()
     {
         Projectile bullet = GameObject.Instantiate(bulletPrefab, transform.position, Quaternion.identity);
         bullet.Direction = Vector2.right;
