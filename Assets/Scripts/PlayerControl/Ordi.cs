@@ -39,6 +39,8 @@ public class Ordi : player
             Vector3 mousePos = transform.position;
             float dir = (isLookingRight ? 1 : -1);
             mousePos.x += attackDist * dir;
+            Vector3 newScale = new Vector3(dir, 1, 1);
+            mouse.transform.localScale = newScale;
             mouse.transform.position = mousePos;
             if (attackDist > 1)
             {
