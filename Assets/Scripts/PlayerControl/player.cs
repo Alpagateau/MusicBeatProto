@@ -138,7 +138,8 @@ public class player : rythmicBehaviour
         }
         if (nextAction != actionset.none)
             lastAction = nextAction;
-        nextAction = actionset.none;
+        if(nextAction != actionset.locked)
+            nextAction = actionset.none;
         //this part will handle collisions
         nextPos = new Vector3(mov.x + (int)transform.position.x, mov.y + (int)transform.position.y);
         if(nextPos == otherPlayer.transform.position && otherPlayer.nextPos == transform.position)
