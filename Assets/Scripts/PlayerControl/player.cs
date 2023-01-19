@@ -14,6 +14,13 @@ public class player : rythmicBehaviour
     [Tooltip("Is the sprite looking right")]
     public bool isLookingRight;
 
+    [Tooltip("The identifier of the chosen Sprite")]
+    public int playerType;
+
+    [Tooltip("The identifier for each player, can only be 1 or 2")]
+    public int playerID;
+
+    public KeepObjectAlive K;
 
     [Header("=> References")]
     [Tooltip("A reference to the other player")]
@@ -44,7 +51,7 @@ public class player : rythmicBehaviour
         locked
     };
 
-//[HideInInspector]
+    [HideInInspector]
     public actionset nextAction = actionset.none;
     [HideInInspector]
     public actionset lastAction;
@@ -55,6 +62,9 @@ public class player : rythmicBehaviour
     private void Start()
     {
         rythmeCounter._Counter.beat += onBeatUpdate;
+        K = (KeepObjectAlive)FindObjectOfType(typeof(KeepObjectAlive));
+        print(K.p1);
+
     }
 
     public override void HandleKeys()

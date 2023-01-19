@@ -9,12 +9,16 @@ public class Menu : MonoBehaviour
     public int spriteP1;
     public int spriteP2;
 
+    public KeepObjectAlive k;
+
     public Image p1, p2;
 
     public Sprite[] _sprites;
     
     public void StartButton()
     {
+        k.p1 = spriteP1; 
+        k.p2 = spriteP2;
         SceneManager.LoadScene(1);
     }
 

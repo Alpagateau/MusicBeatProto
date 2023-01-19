@@ -1195,6 +1195,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 649821555274577957, guid: c0acbd86d95447c4fb14bd57667559a3, type: 3}
+      propertyPath: playerID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 649821555274577957, guid: c0acbd86d95447c4fb14bd57667559a3, type: 3}
       propertyPath: otherPlayer
       value: 
       objectReference: {fileID: 1382061905}
@@ -1468,6 +1472,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   isLookingRight: 1
+  playerType: 0
+  playerID: 1
+  K: {fileID: 0}
   otherPlayer: {fileID: 118442376}
   bulletPrefab: {fileID: 7421062650691423055, guid: 19e7c08f3537e5a4bb4add0a7c46522f, type: 3}
   _spriteRenderer: {fileID: 127327971}
