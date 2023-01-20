@@ -64,7 +64,6 @@ public class player : rythmicBehaviour
         rythmeCounter._Counter.beat += onBeatUpdate;
         K = (KeepObjectAlive)FindObjectOfType(typeof(KeepObjectAlive));
         print(K.p1);
-
     }
 
     public override void HandleKeys()
