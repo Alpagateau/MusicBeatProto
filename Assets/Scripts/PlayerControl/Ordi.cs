@@ -13,9 +13,15 @@ public class Ordi : player
 
     private void Start()
     {
+        initialize();
+        //rythmeCounter._Counter.beat += onBeatUpdate;
+    }
+
+    public override void initialize()
+    {
         mouse.SetActive(false);
         mouseCable.SetActive(false);
-        rythmeCounter._Counter.beat += onBeatUpdate;
+        base.initialize();
     }
 
     public override void Attack()

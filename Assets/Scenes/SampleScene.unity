@@ -1831,6 +1831,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1092346516}
     - target: {fileID: 1382061905, guid: 17a04ea07bc18e54d87d1e79c08e8065, type: 3}
+      propertyPath: playerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1382061905, guid: 17a04ea07bc18e54d87d1e79c08e8065, type: 3}
       propertyPath: mouseCable
       value: 
       objectReference: {fileID: 1641747491}
@@ -1899,6 +1903,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8728403854798966857, guid: 4f41a3fee611db54bb8e243ddb9613e3, type: 3}
+      propertyPath: playerID
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8728403854798966857, guid: 4f41a3fee611db54bb8e243ddb9613e3, type: 3}
       propertyPath: otherPlayer
       value: 

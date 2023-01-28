@@ -20,6 +20,9 @@ public class player : rythmicBehaviour
     [Tooltip("The identifier for each player, can only be 1 or 2")]
     public int playerID;
 
+    [HideInInspector]
+    public healthControl hpc;
+
     public KeepObjectAlive K;
 
     [Header("=> References")]
@@ -61,9 +64,16 @@ public class player : rythmicBehaviour
 
     private void Start()
     {
+        initialize();
+    }
+
+    public virtual void initialize()
+    {
         rythmeCounter._Counter.beat += onBeatUpdate;
         K = (KeepObjectAlive)FindObjectOfType(typeof(KeepObjectAlive));
-        print(K.p1);
+        if (K != null)
+            print(K.p1);
+        hpc = GetComponent<healthControl>();
     }
 
     public override void HandleKeys()
@@ -172,7 +182,8 @@ public class player : rythmicBehaviour
     public virtual void Attack()
     {
         Projectile bullet = GameObject.Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-        bullet.Direction = Vector2.right;
+        bullet.throwerID = playerID;
+        bullet.Direction = isLookingRight?Vector2.right:Vector2.left;
         if (lastAction == actionset.left)
         {
             bullet.Direction = Vector2.left;

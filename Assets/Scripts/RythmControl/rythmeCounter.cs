@@ -37,8 +37,13 @@ public class rythmeCounter : MonoBehaviour
     float bps = 0;
     float btwbps = 0;
 
+    //Envent called on each beat
     public delegate void beatDelegate();
     public beatDelegate beat;
+
+    //envent called each beat, right after the "beat" event
+    public delegate void afterBeatDelegate();
+    public afterBeatDelegate afterBeat;
 
     private void Awake()
     {
@@ -70,6 +75,7 @@ public class rythmeCounter : MonoBehaviour
         {
 
             beat?.Invoke();
+            afterBeat?.Invoke();
             lastUpdate = Time.time;
         }
         rythmeF1.fillAmount = forgiveness / btwbps;
