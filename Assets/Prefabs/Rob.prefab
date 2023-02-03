@@ -53,7 +53,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 649821555274577982, guid: c0acbd86d95447c4fb14bd57667559a3, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: Rob
+      objectReference: {fileID: 0}
+    - target: {fileID: 6057731039715826521, guid: c0acbd86d95447c4fb14bd57667559a3, type: 3}
+      propertyPath: m_Color.b
+      value: 0.07011509
+      objectReference: {fileID: 0}
+    - target: {fileID: 6057731039715826521, guid: c0acbd86d95447c4fb14bd57667559a3, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6057731039715826521, guid: c0acbd86d95447c4fb14bd57667559a3, type: 3}
+      propertyPath: m_Color.r
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0acbd86d95447c4fb14bd57667559a3, type: 3}
