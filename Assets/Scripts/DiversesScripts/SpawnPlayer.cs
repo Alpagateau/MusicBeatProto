@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpawnPlayer : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class SpawnPlayer : MonoBehaviour
     public PlayerProperties Player1Properties;
     public PlayerProperties Player2Properties;
 
+    public Image HealthBarP1;
+    public Image HealthBarP2;
+
     private void Start()
     {
         ke = GameObject.FindObjectOfType<KeepObjectAlive>();
@@ -21,25 +25,15 @@ public class SpawnPlayer : MonoBehaviour
 
         player p1 = Player1.GetComponent<player>();
         player p2 = Player2.GetComponent<player>();
-        /*Ordi Ordi1 = Player1.GetComponent<Ordi>();
-        Ordi Ordi2 = Player2.GetComponent<Ordi>();
-        GameObject mouse = GameObject.Find("Mouse");
-        GameObject cable = GameObject.Find("Cable");*/
+        healthControl HealthP1 = Player1.GetComponent<healthControl>();
+        healthControl HealthP2 = Player2.GetComponent<healthControl>();
         p1.keyCodes = Player1Properties.keyCodes;
         p2.keyCodes = Player2Properties.keyCodes;
         p1.otherPlayer = p2;
         p2.otherPlayer = p1;
         p1.isLookingRight = true;
         p2.isLookingRight = false;
-        /*if (ke.p1==1)
-        {
-            Ordi1.mouse = mouse;
-            Ordi1.mouseCable = cable;
-        }
-        if (ke.p2==1)
-        {
-            Ordi2.mouse = mouse;
-            Ordi2.mouseCable = cable;
-        }*/
+        HealthP1.HealthBar = HealthBarP1;
+        HealthP2.HealthBar = HealthBarP2;
     }
 }

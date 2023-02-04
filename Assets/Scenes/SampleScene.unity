@@ -200,6 +200,8 @@ MonoBehaviour:
   p2Position: {x: 2.5, y: 0, z: 0}
   Player1Properties: {fileID: 11400000, guid: a8357e6a68904b44884910712d8acac1, type: 2}
   Player2Properties: {fileID: 11400000, guid: 164c20821ebe0854eb0b535fa403d488, type: 2}
+  HealthBarP1: {fileID: 1148873101}
+  HealthBarP2: {fileID: 2022700880}
 --- !u!1 &92803800
 GameObject:
   m_ObjectHideFlags: 0
