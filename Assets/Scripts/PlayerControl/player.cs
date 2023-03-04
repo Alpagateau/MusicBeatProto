@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using music;
 
-public class player : rythmicBehaviour
+public class Player : rythmicBehaviour
 {
     [Header("=> Player Caracteristics")]
     [Tooltip("Is the player touching the ground")]
@@ -27,7 +28,7 @@ public class player : rythmicBehaviour
 
     [Header("=> References")]
     [Tooltip("A reference to the other player")]
-    public player otherPlayer;
+    public Player otherPlayer;
 
     [Tooltip("The prefab of the bullet")]
     public Projectile bulletPrefab;
@@ -70,45 +71,50 @@ public class player : rythmicBehaviour
     public virtual void initialize()
     {
         rythmeCounter._Counter.beat += onBeatUpdate;
+        rythmeCounter._Counter.afterBeat += HandleKeys;
         K = (KeepObjectAlive)FindObjectOfType(typeof(KeepObjectAlive));
         if (K != null)
             print(K.p1);
         hpc = GetComponent<healthControl>();
     }
 
-    public override void HandleKeys()
+    public override void HandleKeys(KeyPress[] pressed)
     {
-        base.HandleKeys();
+        base.HandleKeys(pressed);
+        print(pressed.Length + " keys to test");
         if (nextAction != actionset.locked)
         {
-            if (!isOnBeat)
+            
+            foreach(KeyPress k in pressed)
             {
-                nextAction = actionset.none;
-                return;
-            }
-            if (Input.GetKeyDown(keyCodes[3]))
-            {
-                nextAction = actionset.right;
-            }
-            if (Input.GetKeyDown(keyCodes[1]))
-            {
-                nextAction = actionset.left;
-            }
-            if (Input.GetKeyDown(keyCodes[0]))
-            {
-                nextAction = actionset.jump;
-            }
-            if (Input.GetKeyDown(keyCodes[2]))
-            {
-                nextAction = actionset.shoot;
-                print("action = shoot");
+                if (k.status == RythmicStatus.Ok || k.status == RythmicStatus.Perfect)
+                {
+                    print("trying " + k.ToString());
+                    if (keyCodes[3] == k.key)
+                    {
+                        nextAction = actionset.right;
+                    }
+                    if (keyCodes[1] == k.key)
+                    {
+                        nextAction = actionset.left;
+                    }
+                    if (keyCodes[0] == k.key)
+                    {
+                        nextAction = actionset.jump;
+                    }
+                    if (keyCodes[2] == k.key)
+                    {
+                        nextAction = actionset.shoot;
+                        print("action = shoot");
+                    }
+                }
             }
         }
     }
 
-    public override void onBeatUpdate()
+    public override void onBeatUpdate(KeyPress[] pressed)
     {
-        print("onBeatUpdateIsCalled");
+        //print("onBeatUpdateIsCalled");
         Vector3 mov = Vector3.zero;
 
         Debug.DrawRay(transform.position, -Vector2.up, Color.red, 1.0f);
@@ -133,7 +139,6 @@ public class player : rythmicBehaviour
         if (nextAction == actionset.locked)
         {
             Attack();
-            print("shoot 2 is called");
         }
         if (nextAction == actionset.right)
         {
@@ -176,7 +181,7 @@ public class player : rythmicBehaviour
             transform.Translate(mov);
         }
         _spriteRenderer.flipX = !isLookingRight;
-        base.onBeatUpdate();
+        base.onBeatUpdate(pressed);
     }
 
     public virtual void Attack()
@@ -193,5 +198,20 @@ public class player : rythmicBehaviour
             bullet.Direction = Vector2.up;
         }
         Destroy(bullet, 10);
+    }
+
+    public bool AnyKeyPressed(KeyPress[] pressed)
+    {
+        for(int i = 0; i< pressed.Length; i++)
+        {
+            for(int j = 0; j<keyCodes.Length; j++)
+            {
+                if(keyCodes[j] == pressed[i].key)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

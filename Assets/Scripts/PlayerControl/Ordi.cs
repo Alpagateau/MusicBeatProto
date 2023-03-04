@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ordi : player
+public class Ordi : Player
 {
     [Range(1, 5)]
     public int attackDist = 2;

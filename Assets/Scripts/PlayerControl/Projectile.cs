@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using music;
 
 public class Projectile : rythmicBehaviour
 {
@@ -8,12 +9,12 @@ public class Projectile : rythmicBehaviour
     public Vector3 lastPosition;
     public int throwerID;
 
-    public override void onBeatUpdate()
+    public override void onBeatUpdate(KeyPress[] pressed)
     {
         checkCollision();
         lastPosition = transform.position;
         transform.Translate(Direction);
-        base.onBeatUpdate();
+        base.onBeatUpdate(pressed);
     }
 
     public void checkCollision()
@@ -21,7 +22,7 @@ public class Projectile : rythmicBehaviour
         RaycastHit2D hit2D = Physics2D.Raycast(transform.position, Direction, 1);
         if(hit2D.collider != null)
         {
-            player p = hit2D.collider.GetComponent<player>();
+            Player p = hit2D.collider.GetComponent<Player>();
             if(p != null)
             {
                 if (p.playerID != throwerID)
