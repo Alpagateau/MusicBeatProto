@@ -181,8 +181,8 @@ MonoBehaviour:
   rythmicPosition: 0
   rythmicScaledTime: 0
   player1: {fileID: 1382061905}
-  player2: {fileID: 118442376}
-  debuggerBeats: 1
+  player2: {fileID: 0}
+  debuggerBeats: 0
 --- !u!114 &28427716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,10 +204,8 @@ MonoBehaviour:
   p2Position: {x: 2.5, y: 0, z: 0}
   Player1Properties: {fileID: 11400000, guid: a8357e6a68904b44884910712d8acac1, type: 2}
   Player2Properties: {fileID: 11400000, guid: 164c20821ebe0854eb0b535fa403d488, type: 2}
-<<<<<<< Updated upstream
   HealthBarP1: {fileID: 1148873101}
   HealthBarP2: {fileID: 2022700880}
-=======
 --- !u!114 &28427717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,7 +224,6 @@ MonoBehaviour:
   end: {fileID: 199135510}
   parent: {fileID: 846572590}
   nbTicker: 4
->>>>>>> Stashed changes
 --- !u!1 &92803800
 GameObject:
   m_ObjectHideFlags: 0
@@ -387,17 +384,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &118442376 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8728403854798966857, guid: 4f41a3fee611db54bb8e243ddb9613e3, type: 3}
-  m_PrefabInstance: {fileID: 8080905020895007557}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1e53207c7bb34c47bc32342a62d64d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &199135509
 GameObject:
   m_ObjectHideFlags: 0
@@ -1142,6 +1128,11 @@ RectTransform:
   m_AnchoredPosition: {x: -250, y: 0}
   m_SizeDelta: {x: 15, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!212 &827843973 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2608787068824302389, guid: 4f41a3fee611db54bb8e243ddb9613e3, type: 3}
+  m_PrefabInstance: {fileID: 8080905020895007557}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &846572589
 GameObject:
   m_ObjectHideFlags: 0
@@ -1926,6 +1917,40 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2080555697 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8728403854798966866, guid: 4f41a3fee611db54bb8e243ddb9613e3, type: 3}
+  m_PrefabInstance: {fileID: 8080905020895007557}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2080555702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2080555697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1e53207c7bb34c47bc32342a62d64d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isOnBeat: 0
+  isGrounded: 0
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 64
+  isLookingRight: 0
+  playerType: 0
+  playerID: 0
+  hpc: {fileID: 0}
+  K: {fileID: 0}
+  otherPlayer: {fileID: 1382061905}
+  bulletPrefab: {fileID: 3245632654667626586, guid: bfce7703fd80d424cb7f396674c07c95, type: 3}
+  _spriteRenderer: {fileID: 827843973}
+  keyCodes: 11010000140100001201000013010000
+  nextAction: 0
+  lastAction: 0
+  nextPos: {x: 0, y: 0, z: 0}
 --- !u!1 &2099858153
 GameObject:
   m_ObjectHideFlags: 0
@@ -2291,7 +2316,7 @@ PrefabInstance:
     - target: {fileID: 1382061905, guid: 17a04ea07bc18e54d87d1e79c08e8065, type: 3}
       propertyPath: otherPlayer
       value: 
-      objectReference: {fileID: 118442376}
+      objectReference: {fileID: 2080555702}
     - target: {fileID: 4154641633352850464, guid: 17a04ea07bc18e54d87d1e79c08e8065, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -2346,7 +2371,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4154641633352850470, guid: 17a04ea07bc18e54d87d1e79c08e8065, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7259102787342794561, guid: 17a04ea07bc18e54d87d1e79c08e8065, type: 3}
       propertyPath: m_Sprite
@@ -2395,7 +2420,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8728403854798966866, guid: 4f41a3fee611db54bb8e243ddb9613e3, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8728403854798966868, guid: 4f41a3fee611db54bb8e243ddb9613e3, type: 3}
       propertyPath: m_RootOrder
@@ -2445,5 +2470,6 @@ PrefabInstance:
       propertyPath: HealthBar
       value: 
       objectReference: {fileID: 2022700880}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8728403854798966857, guid: 4f41a3fee611db54bb8e243ddb9613e3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4f41a3fee611db54bb8e243ddb9613e3, type: 3}

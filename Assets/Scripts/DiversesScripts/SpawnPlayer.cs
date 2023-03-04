@@ -25,8 +25,8 @@ public class SpawnPlayer : MonoBehaviour
             GameObject Player1 = GameObject.Instantiate(playerTypes[ke.p1 - 1], p1Position, Quaternion.identity);
             GameObject Player2 = GameObject.Instantiate(playerTypes[ke.p2 - 1], p2Position, Quaternion.identity);
 
-            player p1 = Player1.GetComponent<player>();
-            player p2 = Player2.GetComponent<player>();
+            Player p1 = Player1.GetComponent<Player>();
+            Player p2 = Player2.GetComponent<Player>();
             healthControl HealthP1 = Player1.GetComponent<healthControl>();
             healthControl HealthP2 = Player2.GetComponent<healthControl>();
             p1.keyCodes = Player1Properties.keyCodes;
@@ -37,8 +37,7 @@ public class SpawnPlayer : MonoBehaviour
             p2.isLookingRight = false;
             HealthP1.HealthBar = HealthBarP1;
             HealthP2.HealthBar = HealthBarP2;
-            Player p1 = Player1.GetComponent<Player>();
-            Player p2 = Player2.GetComponent<Player>();
+
             /*Ordi Ordi1 = Player1.GetComponent<Ordi>();
             Ordi Ordi2 = Player2.GetComponent<Ordi>();
             GameObject mouse = GameObject.Find("Mouse");
