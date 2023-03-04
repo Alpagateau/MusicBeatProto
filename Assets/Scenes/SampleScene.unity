@@ -181,7 +181,7 @@ MonoBehaviour:
   rythmicPosition: 0
   rythmicScaledTime: 0
   player1: {fileID: 1382061905}
-  player2: {fileID: 0}
+  player2: {fileID: 2080555702}
   debuggerBeats: 0
 --- !u!114 &28427716
 MonoBehaviour:
@@ -1128,11 +1128,6 @@ RectTransform:
   m_AnchoredPosition: {x: -250, y: 0}
   m_SizeDelta: {x: 15, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!212 &827843973 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 2608787068824302389, guid: 4f41a3fee611db54bb8e243ddb9613e3, type: 3}
-  m_PrefabInstance: {fileID: 8080905020895007557}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &846572589
 GameObject:
   m_ObjectHideFlags: 0
@@ -1938,16 +1933,16 @@ MonoBehaviour:
   isGrounded: 0
   groundMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   isLookingRight: 0
   playerType: 0
   playerID: 0
   hpc: {fileID: 0}
   K: {fileID: 0}
-  otherPlayer: {fileID: 1382061905}
-  bulletPrefab: {fileID: 3245632654667626586, guid: bfce7703fd80d424cb7f396674c07c95, type: 3}
-  _spriteRenderer: {fileID: 827843973}
-  keyCodes: 11010000140100001201000013010000
+  otherPlayer: {fileID: 0}
+  bulletPrefab: {fileID: 0}
+  _spriteRenderer: {fileID: 0}
+  keyCodes: 7a000000710000007300000064000000
   nextAction: 0
   lastAction: 0
   nextPos: {x: 0, y: 0, z: 0}
