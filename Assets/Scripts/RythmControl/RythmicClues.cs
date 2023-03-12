@@ -56,6 +56,7 @@ public class RythmicClues : MonoBehaviour
             {
                 if (gm.GetComponent<TickerBehaviour>().ticks_restants == 1)
                 {
+                    gm.GetComponent<TickerBehaviour>().removeFromBeat();
                     Destroy(gm);
                 }
             }

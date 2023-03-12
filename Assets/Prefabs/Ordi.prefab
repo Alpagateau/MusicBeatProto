@@ -61,7 +61,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 649821555274577982, guid: c0acbd86d95447c4fb14bd57667559a3, type: 3}
       propertyPath: m_Name
-      value: Player1
+      value: Ordi
       objectReference: {fileID: 0}
     - target: {fileID: 6057731039715826521, guid: c0acbd86d95447c4fb14bd57667559a3, type: 3}
       propertyPath: m_Color.b
@@ -103,6 +103,7 @@ MonoBehaviour:
   isLookingRight: 1
   playerType: 0
   playerID: 1
+  hpc: {fileID: 0}
   K: {fileID: 0}
   otherPlayer: {fileID: 0}
   bulletPrefab: {fileID: 7421062650691423055, guid: 19e7c08f3537e5a4bb4add0a7c46522f, type: 3}
@@ -112,8 +113,8 @@ MonoBehaviour:
   lastAction: 0
   nextPos: {x: 0, y: 0, z: 0}
   attackDist: 2
-  mouse: {fileID: 0}
-  mouseCable: {fileID: 0}
+  mouse: {fileID: 4331177761915753007, guid: 2745f1fbb7489fd498a2a66104122fd3, type: 3}
+  mouseCable: {fileID: 8440979395945963089, guid: edc1d17594e49a144a26f2de43ba8835, type: 3}
 --- !u!212 &7259102787342794561 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 6057731039715826521, guid: c0acbd86d95447c4fb14bd57667559a3, type: 3}

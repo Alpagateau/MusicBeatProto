@@ -55,9 +55,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rob
       objectReference: {fileID: 0}
+    - target: {fileID: 2653945105742474766, guid: c0acbd86d95447c4fb14bd57667559a3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6057731039715826521, guid: c0acbd86d95447c4fb14bd57667559a3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 23091cee83203464b9946ef6121ba31e, type: 3}
     - target: {fileID: 6057731039715826521, guid: c0acbd86d95447c4fb14bd57667559a3, type: 3}
       propertyPath: m_Color.b
-      value: 0.07011509
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6057731039715826521, guid: c0acbd86d95447c4fb14bd57667559a3, type: 3}
       propertyPath: m_Color.g
@@ -65,7 +73,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6057731039715826521, guid: c0acbd86d95447c4fb14bd57667559a3, type: 3}
       propertyPath: m_Color.r
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0acbd86d95447c4fb14bd57667559a3, type: 3}

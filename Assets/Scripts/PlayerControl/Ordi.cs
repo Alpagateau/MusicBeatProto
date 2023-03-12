@@ -9,6 +9,9 @@ public class Ordi : Player
 
     public GameObject mouse, mouseCable;
 
+    [HideInInspector]
+    public GameObject activeMouse;
+
     GameObject[] cables; 
 
     private void Start()
@@ -19,8 +22,6 @@ public class Ordi : Player
 
     public override void initialize()
     {
-        mouse.SetActive(false);
-        mouseCable.SetActive(false);
         base.initialize();
     }
 
@@ -28,7 +29,7 @@ public class Ordi : Player
     {
         if (nextAction == actionset.locked)
         {
-            mouse.SetActive(false);
+            activeMouse.SetActive(false);
             if (attackDist > 1)
             {
                 for (int i = 0; i < attackDist - 1; i++)
@@ -37,17 +38,19 @@ public class Ordi : Player
                 }
                 cables = null;
             }
+            Destroy(activeMouse);
             print("action unlocked");
             nextAction = actionset.none;
         }
         if (nextAction == actionset.shoot)
         {
+            activeMouse = Instantiate(mouse);
             Vector3 mousePos = transform.position;
             float dir = (isLookingRight ? 1 : -1);
             mousePos.x += attackDist * dir;
             Vector3 newScale = new Vector3(dir, 1, 1);
-            mouse.transform.localScale = newScale;
-            mouse.transform.position = mousePos;
+            activeMouse.transform.localScale = newScale;
+            activeMouse.transform.position = mousePos;
             if (attackDist > 1)
             {
                 mousePos.x -= 0.5f * dir;
@@ -61,7 +64,7 @@ public class Ordi : Player
             }
             print("action locked");
             nextAction = actionset.locked;
-            mouse.SetActive(true);
+            activeMouse.SetActive(true);
         }
         //base.Attack();
     }

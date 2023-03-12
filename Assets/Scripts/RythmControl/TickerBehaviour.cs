@@ -21,14 +21,19 @@ public class TickerBehaviour : MonoBehaviour
         lastTickPosition = rectTransform.anchoredPosition3D;
     }
 
-    void OnBeat(KeyPress[] a)
+    public void removeFromBeat()
+    {
+        rythmeCounter._Counter.beat -= OnBeat;
+    }
+
+    public void OnBeat(KeyPress[] a)
     {
         lastTickPosition = lastTickPosition + (endPosition.anchoredPosition3D - lastTickPosition) / ticks_restants;
         ticks_restants--;
         if(ticks_restants == 0)
         {
-            if(gameObject != null)
-                Destroy(gameObject);
+            removeFromBeat();
+            Destroy(gameObject);
         }
     }
 
