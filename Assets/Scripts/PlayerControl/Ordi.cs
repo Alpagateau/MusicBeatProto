@@ -39,14 +39,14 @@ public class Ordi : Player
                 cables = null;
             }
             Destroy(activeMouse);
-            print("action unlocked");
+            print(name + " || action unlocked");
             nextAction = actionset.none;
         }
         if (nextAction == actionset.shoot)
         {
             activeMouse = Instantiate(mouse);
             Vector3 mousePos = transform.position;
-            float dir = (isLookingRight ? 1 : -1);
+            int dir = (isLookingRight ? 1 : -1);
             mousePos.x += attackDist * dir;
             Vector3 newScale = new Vector3(dir, 1, 1);
             activeMouse.transform.localScale = newScale;
@@ -62,10 +62,26 @@ public class Ordi : Player
                     cables[i].SetActive(true);
                 }
             }
-            print("action locked");
+            print(name + " || action locked");
             nextAction = actionset.locked;
             activeMouse.SetActive(true);
+
+            CheckCollisionWhenAttack(dir);
         }
         //base.Attack();
+    }
+
+    void CheckCollisionWhenAttack(int dir)
+    {
+        RaycastHit2D[] hit2D = new RaycastHit2D[3];
+        int res = Physics2D.Raycast(transform.position, Vector2.right * dir,new ContactFilter2D(), hit2D ,attackDist);
+        if (res > 1)
+        {
+            if (hit2D[1].collider.name == otherPlayer.name) // checks for the names ig
+            {
+                Debug.DrawLine(transform.position, hit2D[1].point, Color.green, 2);
+                otherPlayer.hpc.TakeDamage(10);
+            }
+        }
     }
 }

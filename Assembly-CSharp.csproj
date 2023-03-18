@@ -66,11 +66,11 @@
     <Compile Include="Assets\Scripts\PlayerControl\Projectile.cs" />
     <Compile Include="Assets\Scripts\RythmControl\TickerBehaviour.cs" />
     <Compile Include="Assets\Scripts\PlayerControl\Ordi.cs" />
+    <Compile Include="Assets\Scripts\PlayerControl\Brot.cs" />
     <Compile Include="Assets\Scripts\HealthBar\healthControl.cs" />
     <Compile Include="Assets\Scripts\RythmControl\Structures.cs" />
     <Compile Include="Assets\Scripts\DiversesScripts\SpawnPlayer.cs" />
     <Compile Include="Assets\Scripts\RythmControl\RythmicClues.cs" />
-    <Compile Include="Assets\Scripts\PlayerControl\Brot.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

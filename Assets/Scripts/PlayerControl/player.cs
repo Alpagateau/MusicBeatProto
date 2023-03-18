@@ -81,7 +81,6 @@ public class Player : rythmicBehaviour
     public override void HandleKeys(KeyPress[] pressed)
     {
         base.HandleKeys(pressed);
-        print(pressed.Length + " keys to test");
         if (nextAction != actionset.locked)
         {
             
@@ -89,7 +88,6 @@ public class Player : rythmicBehaviour
             {
                 if (k.status == RythmicStatus.Ok || k.status == RythmicStatus.Perfect)
                 {
-                    print("trying " + k.ToString());
                     if (keyCodes[3] == k.key)
                     {
                         nextAction = actionset.right;
@@ -105,7 +103,6 @@ public class Player : rythmicBehaviour
                     if (keyCodes[2] == k.key)
                     {
                         nextAction = actionset.shoot;
-                        print("action = shoot");
                     }
                 }
             }
@@ -132,7 +129,7 @@ public class Player : rythmicBehaviour
             if (nextAction != actionset.jump)
             {
                 mov = new Vector3(0, -1, 0);
-                print("gravity");
+                print(name + " || gravity");
             }
         }
 
@@ -153,12 +150,12 @@ public class Player : rythmicBehaviour
         if (nextAction == actionset.jump)
         {
             mov = new Vector3(0, 2, 0);
-            print("jump");
+            print(name + "|| jump");
         }
         if (nextAction == actionset.shoot)
         {
             Attack();
-            print("shoot 1 is called");
+            print(name + " || shoot 1 is called");
         }
         if (nextAction != actionset.none)
             lastAction = nextAction;
@@ -169,12 +166,12 @@ public class Player : rythmicBehaviour
         if(nextPos == otherPlayer.transform.position && otherPlayer.nextPos == transform.position)
         {
             //can't move
-            print("can't move");
+            print(name + " || can't move");
         }
         else if(nextPos ==  otherPlayer.nextPos)
         {
             //deflect
-            print("deflect actually");
+            print(name + " || deflect actually");
         }
         else
         {
