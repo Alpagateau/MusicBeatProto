@@ -12,7 +12,7 @@ public class Ordi : Player
     [HideInInspector]
     public GameObject activeMouse;
 
-    GameObject[] cables; 
+    GameObject[] cables;
 
     private void Start()
     {
@@ -55,7 +55,7 @@ public class Ordi : Player
             {
                 mousePos.x -= 0.5f * dir;
                 cables = new GameObject[attackDist - 1];
-                for(int i = 0; i<attackDist-1; i++)
+                for (int i = 0; i < attackDist - 1; i++)
                 {
                     mousePos.x -= dir;
                     cables[i] = Instantiate(mouseCable, mousePos, Quaternion.identity);
@@ -74,7 +74,7 @@ public class Ordi : Player
     void CheckCollisionWhenAttack(int dir)
     {
         RaycastHit2D[] hit2D = new RaycastHit2D[3];
-        int res = Physics2D.Raycast(transform.position, Vector2.right * dir,new ContactFilter2D(), hit2D ,attackDist);
+        int res = Physics2D.Raycast(transform.position, Vector2.right * dir, new ContactFilter2D(), hit2D, attackDist);
         if (res > 1)
         {
             if (hit2D[1].collider.name == otherPlayer.name) // checks for the names ig

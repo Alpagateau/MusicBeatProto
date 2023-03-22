@@ -83,8 +83,8 @@ public class Player : rythmicBehaviour
         base.HandleKeys(pressed);
         if (nextAction != actionset.locked)
         {
-            
-            foreach(KeyPress k in pressed)
+
+            foreach (KeyPress k in pressed)
             {
                 if (k.status == RythmicStatus.Ok || k.status == RythmicStatus.Perfect)
                 {
@@ -159,16 +159,16 @@ public class Player : rythmicBehaviour
         }
         if (nextAction != actionset.none)
             lastAction = nextAction;
-        if(nextAction != actionset.locked)
+        if (nextAction != actionset.locked)
             nextAction = actionset.none;
         //this part will handle collisions
         nextPos = new Vector3(mov.x + (int)transform.position.x, mov.y + (int)transform.position.y);
-        if(nextPos == otherPlayer.transform.position && otherPlayer.nextPos == transform.position)
+        if (nextPos == otherPlayer.transform.position && otherPlayer.nextPos == transform.position)
         {
             //can't move
             print(name + " || can't move");
         }
-        else if(nextPos ==  otherPlayer.nextPos)
+        else if (nextPos == otherPlayer.nextPos)
         {
             //deflect
             print(name + " || deflect actually");
@@ -185,7 +185,7 @@ public class Player : rythmicBehaviour
     {
         Projectile bullet = GameObject.Instantiate(bulletPrefab, transform.position, Quaternion.identity);
         bullet.throwerID = playerID;
-        bullet.Direction = isLookingRight?Vector2.right:Vector2.left;
+        bullet.Direction = isLookingRight ? Vector2.right : Vector2.left;
         if (lastAction == actionset.left)
         {
             bullet.Direction = Vector2.left;
@@ -199,11 +199,11 @@ public class Player : rythmicBehaviour
 
     public bool AnyKeyPressed(KeyPress[] pressed)
     {
-        for(int i = 0; i< pressed.Length; i++)
+        for (int i = 0; i < pressed.Length; i++)
         {
-            for(int j = 0; j<keyCodes.Length; j++)
+            for (int j = 0; j < keyCodes.Length; j++)
             {
-                if(keyCodes[j] == pressed[i].key)
+                if (keyCodes[j] == pressed[i].key)
                 {
                     return true;
                 }
