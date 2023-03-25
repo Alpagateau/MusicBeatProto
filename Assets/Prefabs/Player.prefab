@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 413bde30c36665c42831a3e60fb46a80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageAnimationDuration: 0.5
   HealthBar: {fileID: 0}
   maxHP: 100
   HP: 100
@@ -69,10 +70,15 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   isLookingRight: 0
+  playerType: 0
+  playerID: 0
+  hpc: {fileID: 0}
+  K: {fileID: 0}
   otherPlayer: {fileID: 0}
   bulletPrefab: {fileID: 7421062650691423055, guid: 19e7c08f3537e5a4bb4add0a7c46522f, type: 3}
-  _spriteRenderer: {fileID: 6057731039715826521}
+  _VFX: {fileID: 6533299915780071333}
   keyCodes: 7a000000710000007300000064000000
+  nextAction: 0
   lastAction: 0
   nextPos: {x: 0, y: 0, z: 0}
 --- !u!61 &649821555274577979

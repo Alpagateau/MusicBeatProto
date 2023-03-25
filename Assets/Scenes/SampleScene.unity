@@ -778,7 +778,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1270, y: 720}
+  m_ReferenceResolution: {x: 960, y: 720}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1170,7 +1170,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -148, y: 70}
+  m_AnchoredPosition: {x: -150, y: 35}
   m_SizeDelta: {x: 230, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &407565162
@@ -2428,7 +2428,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 147, y: 70}
+  m_AnchoredPosition: {x: 150, y: 35}
   m_SizeDelta: {x: 230, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &987092216
@@ -2580,8 +2580,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000061543, y: -0.0005683899}
-  m_SizeDelta: {x: 1270, y: 711.66}
+  m_AnchoredPosition: {x: -0.0000061543, y: -296.00027}
+  m_SizeDelta: {x: 960, y: 128}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1092346516 stripped
 GameObject:
@@ -2624,8 +2624,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 64}
-  m_SizeDelta: {x: 0, y: 128}
+  m_AnchoredPosition: {x: 0, y: 80}
+  m_SizeDelta: {x: 0, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1114605833
 MonoBehaviour:
@@ -3582,6 +3582,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1e53207c7bb34c47bc32342a62d64d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOnBeat: 0
+  isGrounded: 0
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 0
+  isLookingRight: 0
+  playerType: 0
+  playerID: 0
+  hpc: {fileID: 0}
+  K: {fileID: 0}
+  otherPlayer: {fileID: 0}
+  bulletPrefab: {fileID: 0}
+  _spriteRenderer: {fileID: 0}
+  keyCodes: 7a000000710000007300000064000000
+  nextAction: 0
+  lastAction: 0
+  nextPos: {x: 0, y: 0, z: 0}
 --- !u!1 &2087067870
 GameObject:
   m_ObjectHideFlags: 0
