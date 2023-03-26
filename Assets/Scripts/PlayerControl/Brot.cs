@@ -27,6 +27,7 @@ public class Brot : Player
             {
                 nPos -= direction;
             }
+            nextPos = nPos;
             transform.position = nPos;
         }
         nextAction = actionset.none;

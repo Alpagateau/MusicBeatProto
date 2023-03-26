@@ -16,7 +16,6 @@ public class Projectile : rythmicBehaviour
         transform.Translate(Direction);
         base.onBeatUpdate(pressed);
     }
-
     public void checkCollision()
     {
         RaycastHit2D hit2D = Physics2D.Raycast(transform.position, Direction, 1);

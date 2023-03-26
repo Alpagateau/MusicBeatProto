@@ -21,6 +21,9 @@ public class Player : rythmicBehaviour
     [Tooltip("The identifier for each player, can only be 1 or 2")]
     public int playerID;
 
+    private bool isAnimated;
+    private Animator animat;
+
     [HideInInspector]
     public healthControl hpc;
 
@@ -33,7 +36,9 @@ public class Player : rythmicBehaviour
     [Tooltip("The prefab of the bullet")]
     public Projectile bulletPrefab;
 
-    public SpriteRenderer _spriteRenderer;
+    [Tooltip("Child of the player entity, used for display only")]
+    public GameObject _VFX;
+    SpriteRenderer _spriteRenderer;
 
     [Header("=> Controls")]
     [Tooltip("up; left; down; right. Ex : Z Q S D")]
@@ -63,6 +68,8 @@ public class Player : rythmicBehaviour
     public Vector3 nextPos;
 
 
+    List<string> anim_names;
+
     private void Start()
     {
         initialize();
@@ -76,6 +83,12 @@ public class Player : rythmicBehaviour
         if (K != null)
             print(K.p1);
         hpc = GetComponent<healthControl>();
+        _spriteRenderer = _VFX.GetComponent<SpriteRenderer>();
+        if (_VFX.GetComponent<Animator>() != null)
+        {
+            isAnimated = true;
+            animat = _VFX.GetComponent<Animator>();
+        }
     }
 
     public override void HandleKeys(KeyPress[] pressed)
@@ -114,6 +127,8 @@ public class Player : rythmicBehaviour
         //print("onBeatUpdateIsCalled");
         Vector3 mov = Vector3.zero;
 
+        int animNum = 0;
+
         Debug.DrawRay(transform.position, -Vector2.up, Color.red, 1.0f);
         RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, 1.0f, groundMask);
         if (hit.collider != null)
@@ -130,32 +145,38 @@ public class Player : rythmicBehaviour
             {
                 mov = new Vector3(0, -1, 0);
                 print(name + " || gravity");
+                animNum = 3;
             }
         }
 
         if (nextAction == actionset.locked)
         {
             Attack();
+            animNum = 6;
         }
         if (nextAction == actionset.right)
         {
             mov = new Vector3(1, 0, 0);
             isLookingRight = true;
+            animNum = 1;
         }
         if (nextAction == actionset.left)
         {
             mov = new Vector3(-1, 0, 0);
             isLookingRight = false;
+            animNum = 1;
         }
         if (nextAction == actionset.jump)
         {
             mov = new Vector3(0, 2, 0);
             print(name + "|| jump");
+            animNum = 2;
         }
         if (nextAction == actionset.shoot)
         {
             Attack();
             print(name + " || shoot 1 is called");
+            animNum = 4;
         }
         if (nextAction != actionset.none)
             lastAction = nextAction;
@@ -178,6 +199,11 @@ public class Player : rythmicBehaviour
             transform.Translate(mov);
         }
         _spriteRenderer.flipX = !isLookingRight;
+        if(isAnimated)
+        {
+            animat.SetFloat("Value", animNum);
+        }
+
         base.onBeatUpdate(pressed);
     }
 

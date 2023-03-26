@@ -83,7 +83,27 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 649821555274577982, guid: c0acbd86d95447c4fb14bd57667559a3, type: 3}
   m_PrefabInstance: {fileID: 3507426490541401112}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1382061905
+--- !u!95 &-9204082290349467154
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4154641633352850470}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-2088924659976603081
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,31 +112,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 4154641633352850470}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38e436440244a6f4fb3ddffca4733b16, type: 3}
+  m_Script: {fileID: 11500000, guid: d1e53207c7bb34c47bc32342a62d64d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isOnBeat: 0
-  isGrounded: 0
+  isGrounded: 1
   groundMask:
     serializedVersion: 2
     m_Bits: 64
-  isLookingRight: 1
+  isLookingRight: 0
   playerType: 0
-  playerID: 1
+  playerID: 0
   hpc: {fileID: 0}
   K: {fileID: 0}
   otherPlayer: {fileID: 0}
   bulletPrefab: {fileID: 7421062650691423055, guid: 19e7c08f3537e5a4bb4add0a7c46522f, type: 3}
-  _spriteRenderer: {fileID: 7259102787342794561}
+  _VFX: {fileID: 7639811855932390333}
   keyCodes: 7a000000710000007300000064000000
   nextAction: 0
   lastAction: 0
   nextPos: {x: 0, y: 0, z: 0}
-  attackDist: 2
-  mouse: {fileID: 4331177761915753007, guid: 2745f1fbb7489fd498a2a66104122fd3, type: 3}
-  mouseCable: {fileID: 8440979395945963089, guid: edc1d17594e49a144a26f2de43ba8835, type: 3}
---- !u!212 &7259102787342794561 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 6057731039715826521, guid: c0acbd86d95447c4fb14bd57667559a3, type: 3}
+--- !u!1 &7639811855932390333 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6533299915780071333, guid: c0acbd86d95447c4fb14bd57667559a3, type: 3}
   m_PrefabInstance: {fileID: 3507426490541401112}
   m_PrefabAsset: {fileID: 0}
