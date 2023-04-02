@@ -8,7 +8,7 @@ public class Projectile : rythmicBehaviour
     public Vector2 Direction;
     public Vector3 lastPosition;
     public int throwerID;
-
+    private int previousValue;
     public override void onBeatUpdate(KeyPress[] pressed)
     {
         checkCollision();
@@ -22,15 +22,14 @@ public class Projectile : rythmicBehaviour
         if(hit2D.collider != null)
         {
             Player p = hit2D.collider.GetComponent<Player>();
-            if(p != null)
+            int itjustworks = hit2D.collider.GetInstanceID();
+            if (itjustworks >= previousValue)
             {
-                if (p.playerID != throwerID)
-                {
-                    p.hpc.TakeDamage(10);
-                    print("Damages to " + p.gameObject.name + " with 10");
-                    Destroy(this.gameObject);
-                }
+                p.hpc.TakeDamage(10);
+                print("Damages to " + p.gameObject.name + " with 10");
+                Destroy(this.gameObject);
             }
+            previousValue = itjustworks;
         }
     }
 }

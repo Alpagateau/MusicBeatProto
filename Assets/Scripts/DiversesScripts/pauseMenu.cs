@@ -36,7 +36,10 @@ public class pauseMenu : MonoBehaviour
     }
     public void BackButton()
     { 
+        GameObject dontDestroyObj = GameObject.Find("DataGraber");
+        Destroy(dontDestroyObj);
         SceneManager.LoadScene(0);
+
     }
     public void ResumeButton()
     {
